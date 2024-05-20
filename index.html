@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+    
+  <body>
+    <h1>📷 Webcam Mirror 🪞</h1>
+    <div id="videoContainer"></div>
+    <div id="controls">
+      <p>Block Size:</p>
+      <input type="range" id="blockSizeSlider" min="1" max="40" value="20">
+      
+      <div class="color-container">
+          <div class="color-selector" id="colorSelector1"></div>
+          <p>Selected Color 1:</p>
+          <div class="color-display" id="selectedColorDisplay1"></div>
+      </div>
+      
+      <p>Replace With Color 1 (#RRGGBB):</p>
+      <input type="text" id="replaceColorInput1" value="#ff0000">
+      <div class="color-display-small" id="replaceColorDisplay1"></div>
+      <button id="replaceButton1">Replace Color 1</button>
+      
+      <div class="color-container">
+          <div class="color-selector" id="colorSelector2"></div>
+          <p>Selected Color 2:</p>
+          <div class="color-display" id="selectedColorDisplay2"></div>
+      </div>
+      
+      <p>Replace With Color 2 (#RRGGBB):</p>
+      <input type="text" id="replaceColorInput2" value="#0000ff">
+      <div class="color-display-small" id="replaceColorDisplay2"></div>
+      <button id="replaceButton2">Replace Color 2</button>
+      
+      <p>Similarity Threshold:</p>
+      <input type="range" id="similaritySlider" min="1" max="255" value="50">
+    </div>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
