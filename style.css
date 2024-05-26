@@ -1,62 +1,101 @@
 body {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  font-family: Arial, sans-serif;
-  background: rgb(237, 171, 116);
+  align-items: center;
+  margin: 0; /* 0 margin to make webcam video fullscreen*/
+  padding: 0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
 }
 
 #videoContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  background-color: #000000; /* The webcam video will display black if it is fails to operate */
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
 }
 
 #controls {
-  margin: 20px;
+  position: fixed;
+  right: -300px; 
+  top: 0;
+  width: 150px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding: 10px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
 }
+/* Control Panel Style */
 
-.color-container {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.color-selector {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid black;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.color-selector:hover{
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 5px solid black;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.color-display {
+#controls input[type="color"] {
+  display: block;
   width: 50px;
   height: 50px;
-  border: 2px solid #000;
-  background: rgb(255, 255, 255);
-  margin-left: 10px;
+  margin: 0px;
 }
+/* Colour Selector Style */
 
-.color-display-small {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-left: 10px;
-  display: inline-block;
+#controls input[type="range"] {
+  width: 90%;
 }
+/* Slider Style */
 
-p {
+#controls button {
+  display: block;
+  width: 100%;
   margin: 5px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
+
+#controls button:hover {
+  background-color: #151515;
+  color: #ffffff;
+}
+/* Button Style */
+
+.control-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.control-row p {
+  margin: 0 0 5px 0;
+  width: 100%;
+  text-align: center;
+}
+
+#navToggle {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #000000;
+  padding: 1px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+#navToggle:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+}
+/* Summon button style*/

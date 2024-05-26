@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelate Me in2 Colours</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+  <script src="libraries/CCapture.min.js"></script>
+</head>
 
-    <title>Sketch</title>
+<!-- The following code was produced thanks to the work to create the p5 Library by Lauren McCarthy. -->
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+<body>
+  <div id="videoContainer"></div>
+  <!-- Canvas for webcam video -->
 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
-  </head>
-    
-  <body>
-    <h1>📷 Webcam Mirror 🪞</h1>
-    <div id="videoContainer"></div>
-    <div id="controls">
+  <div id="controls">
+  <!-- Control Panel -->
+    <button id="screenshotButton" style="margin-bottom: 5px;">Screenshot 📷</button>
+    <!-- Screenshot Button -->
+
+    <div class="control-row"> <!-- Elements container, used to separate different functions-->
+      <p>Filters:</p>
+      <button id="filterButton1" style="background-color: #306230; color: #8BAC0F;">GameBoy</button> 
+      <button id="filterButton2" style="background-color: #704214; color: #ffebcd;">Sepia</button>
+      <button id="filterButton3" style="background-color: #3375D0; color: #ffffff;">:(</button> <!-- :( Your PC ran into a problem and needs to restart ...... 20% complete -->
+      <button id="filterButton4" style="background-color: #000000; color: #ffffff;">Black and White</button>
+      <!-- Special button colour style corresponding to replacement colour -->
+
+      <button id="filterButton5">Reset</button>
+    </div>
+    <!-- Filters, button name CONNECT to function, RENAME CAREFULLY! -->
+
+    <div class="control-row">
       <p>Block Size:</p>
-      <input type="range" id="blockSizeSlider" min="1" max="40" value="20">
-      
-      <div class="color-container">
-          <div class="color-selector" id="colorSelector1"></div>
-          <p>Selected Color 1:</p>
-          <div class="color-display" id="selectedColorDisplay1"></div>
-      </div>
-      
-      <p>Replace With Color 1 (#RRGGBB):</p>
-      <input type="text" id="replaceColorInput1" value="#ff0000">
-      <div class="color-display-small" id="replaceColorDisplay1"></div>
-      <button id="replaceButton1">Replace Color 1</button>
-      
-      <div class="color-container">
-          <div class="color-selector" id="colorSelector2"></div>
-          <p>Selected Color 2:</p>
-          <div class="color-display" id="selectedColorDisplay2"></div>
-      </div>
-      
-      <p>Replace With Color 2 (#RRGGBB):</p>
-      <input type="text" id="replaceColorInput2" value="#0000ff">
-      <div class="color-display-small" id="replaceColorDisplay2"></div>
-      <button id="replaceButton2">Replace Color 2</button>
-      
+      <input type="range" id="blockSizeSlider" min="10" max="40" value="20">
+    </div>
+    <!-- Control Pixelation (number and size of blocks on webcam video) -->
+
+    <div class="control-row">
       <p>Similarity Threshold:</p>
-      <input type="range" id="similaritySlider" min="1" max="255" value="50">
+      <input type="range" id="similaritySlider" min="0" max="255" value="125">
+    </div>
+    <!-- Lower value -> Harder to replace selected colour & smaller selected area -->
+    <!-- Higher value -> Easier to replace selected colour & larger selected area -->
+
+
+    <div class="control-row">
+      <p>Selected Colour 1:</p>
+      <input type="color" id="selectedColorInput1" value="#ffffff"> <!-- Value control colour display-->
+    </div>
+    <!-- Custom select colour 1 -->
+    <div class="control-row">
+      <p>Replace With:</p>
+      <input type="color" id="replaceColorInput1" value="#ff0000">
+      <button id="replaceButton1">Replace</button> <!-- Click 'Replace' to apply colour replacement-->
+      <button id="resetButton1">Reset</button> <!-- Click 'Reset' to cancel colour replacement-->
+    </div>
+     <!-- Custom replace colour 1 & reset -->
+    <div class="control-row">
+      <p>Selected Colour 2:</p>
+      <input type="color" id="selectedColorInput2" value="#ffffff">
     </div>
 
-    <script src="sketch.js"></script>
-  </body>
+    <div class="control-row">
+      <p>Replace With:</p>
+      <input type="color" id="replaceColorInput2" value="#0000ff">
+      <button id="replaceButton2">Replace</button>
+      <button id="resetButton2">Reset</button>
+    </div>
+  </div>
+  
+
+  <div id="navToggle" onclick="toggleNav()">&#9664;</div> <!-- &#9664 -> Arrow icon -->
+  <!-- Button on right center screen, click to summon control panel -->
+  <script src="sketch.js"></script>
+</body>
 </html>
